@@ -1,0 +1,23 @@
+
+  <script type="text/javascript">
+    window.addEventListener('load', function () {
+
+      var e = [].slice.apply(document.querySelectorAll('header a'));
+
+      e.forEach(function (e) {
+        var txt = e.textContent.toLowerCase();
+        var img = new Image();
+        img.onload = function () {
+          var cs = getComputedStyle(e);
+          e.style.width = cs.width;
+          e.style.backgroundImage = 'url(txt-' + txt + '.svg)';
+          e.textContent = '';
+        };
+        img.src = 'txt-' + txt + '.svg';
+      });
+
+    });
+  </script>
+
+</body>
+</html>

@@ -1,15 +1,18 @@
 
-hr-blue = #40f
+// hr-blue = #40f
+hr-blue = #00f
 hr-grey = #d8d8d8
 hr-red = #e00
 hr-green = #0e9
 
-hr-order()
+hr-btn()
   color white
   background black
+  border none
   display inline-block
   padding 12px 28px
   border-radius 6px
+  text-decoration none
 
 body
   font-weight bold
@@ -61,7 +64,7 @@ section
 .block-1
   padding 48px 0
   background hr-grey
-  div
+  >div
     width 820px
     padding-left 200px
   h1:nth-child(1)
@@ -73,7 +76,7 @@ section
   h1:nth-child(3)
     margin 48px 0 12px
   a.order
-    hr-order()
+    hr-btn()
 
 .block-2
   color white
@@ -148,7 +151,7 @@ section
   .order
     text-align right
     a
-      hr-order()
+      hr-btn()
 
 .block-4
   padding 24px 0
@@ -171,8 +174,8 @@ section
   color white
   background black
   >div
-    width 380px
-    padding-right 640px
+    width 310px
+    padding-right 710px
 
 .block-6
   padding 24px 0
@@ -181,3 +184,39 @@ section
   >div
     width 510px
     padding-left 510px
+  table tr td:first-child
+    width 100px
+
+.block-order
+  padding 24px 0 208px
+  background-color hr-grey
+  background-image url('package.png')
+  background-size 1000px auto
+  background-repeat no-repeat
+  background-position center bottom
+  >div
+    width 820px
+    padding-left 200px
+  h1
+    width 640px
+  p
+    width 320px
+  p:nth-child(2)
+    margin-bottom 4px
+  p:nth-child(3)
+    margin-top 4px
+    text-indent 12px
+  p:nth-child(4)
+    color hr-blue
+  [type="email"]
+    border 0
+    background transparent
+    padding-bottom 2px
+    border-bottom 1px solid #666
+    font-size 16pt
+    font-weight normal
+    margin 24px 0 12px
+    width 320px
+  [type="submit"]
+    margin-top 12px
+    hr-btn()
