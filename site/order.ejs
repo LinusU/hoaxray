@@ -18,11 +18,39 @@
         our newsletter or spam, only for
         notifing you about the product status.
       </p>
-      <form>
-        <input type="email" placeholder="Your email address" /> <br />
+      <form action="https://docs.google.com/forms/d/1Zdm49W2rA-USWwO63_8ulNeRlCGhuuhgN39WlUxKObE/formResponse?embedded=true" method="POST">
+        <input type="email" name="entry.75037603" placeholder="Your email address" /> <br />
         <input type="submit" value="Let me know" />
       </form>
     </div>
   </section>
+
+  <iframe id="google" name="google" style="display: none;"></iframe>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function () {
+
+      var s = false;
+      var form = document.querySelector('form');
+      var iframe = document.querySelector('#google');
+
+      form.setAttribute('target', 'google');
+
+      form.addEventListener('submit', function () {
+        form.querySelector('[type="submit"]').setAttribute('disabled', true);
+        s = true;
+      });
+
+      iframe.addEventListener('load', function () {
+        if (s) {
+          var h1 = document.createElement('h1');
+          form.parentNode.insertBefore(h1, form);
+          form.parentNode.removeChild(form);
+          h1.textContent = 'Thank you! We will be in touch.';
+        }
+      });
+
+    });
+  </script>
 
 <% include foot %>
