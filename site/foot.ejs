@@ -17,6 +17,21 @@
       });
 
     });
+    window.addEventListener('load', function () {
+
+      var fb = document.querySelector('iframe#fb');
+      var base = 'http://www.facebook.com/plugins/like.php?';
+      var settings = [
+        'href=https%3A%2F%2Fwww.facebook.com%2Fhoaxray',
+        'layout=button_count',
+        'action=like',
+        'height=21',
+        'appId=281649618521696'
+      ];
+
+      fb.src = base + settings.join('&');
+
+    });
   </script>
 
 </body>
