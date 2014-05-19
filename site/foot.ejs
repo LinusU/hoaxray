@@ -11,6 +11,7 @@
           var cs = getComputedStyle(e);
           e.style.width = cs.width;
           e.style.backgroundImage = 'url(txt-' + txt + '.svg)';
+          e.style.backgroundSize = 'auto 40%';
           e.textContent = '';
         };
         img.src = 'txt-' + txt + '.svg';
