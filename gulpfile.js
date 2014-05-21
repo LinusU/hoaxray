@@ -10,6 +10,7 @@ var paths = {
   assets: ['assets/*'],
   css: ['vendor/*.styl', 'site/*.styl'],
   html: ['site/*.ejs'],
+  php: ['php/*.php'],
   out: 'build/'
 };
 
@@ -34,14 +35,20 @@ gulp.task('assets', function () {
     .pipe(gulp.dest(paths.out));
 });
 
+gulp.task('php', function () {
+  return gulp.src(paths.php)
+    .pipe(gulp.dest(paths.out));
+});
+
 gulp.task('server', ['default'], function () {
   var child_process = require('child_process');
   child_process.exec('php -S localhost:5680 -t ' + (__dirname + '/build'));
   console.log('http://localhost:5680/');
 });
 
-gulp.task('default', ['css', 'html', 'assets'], function() {
+gulp.task('default', ['css', 'html', 'assets', 'php'], function() {
   gulp.watch(paths.css, ['css']);
   gulp.watch(paths.html, ['html']);
   gulp.watch(paths.assets, ['assets']);
+  gulp.watch(paths.php, ['php']);
 });

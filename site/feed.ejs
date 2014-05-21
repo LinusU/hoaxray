@@ -1,0 +1,68 @@
+
+<% include head %>
+
+  <section class="block-feed-header">
+    <div>
+      <h1>Use the hashtag #hoaxray</h1>
+    </div>
+  </section>
+
+  <section class="block-feed-posts">
+    <div><h1>Loading...</h1></div>
+  </section>
+
+  <script type="text/javascript">
+    window.addEventListener('load', function () {
+
+      function loadInstagram (cb) {
+        // if (sessionStorage.getItem('instagram')) {
+        //   return cb(null, JSON.parse(sessionStorage.getItem('instagram')));
+        // }
+        var req = new XMLHttpRequest();
+        req.open('GET', '/instagram.php');
+        req.onreadystatechange = function () {
+          if (req.readyState === 4) {
+            if (req.status === 200) {
+              try {
+                cb(null, JSON.parse(req.responseText));
+                // sessionStorage.setItem('instagram', req.responseText);
+              } catch (err) {
+                cb(err);
+              }
+            } else {
+              cb(new Error('Network problem'));
+            }
+          }
+        };
+        req.send();
+      }
+
+      loadInstagram(function (err, res) {
+        if (err) { throw err; }
+
+        var el = document.querySelector('.block-feed-posts');
+        var posts = res.data.map(function (e) {
+          return {
+            image: e.images.standard_resolution.url,
+            user: e.user,
+            likes: e.likes.count,
+            caption: e.caption.text
+          }
+        });
+
+        el.innerHTML = posts.reduce(function (html, post) {
+
+          html += '<div class="post">';
+          html += '  <img src="' + post.image + '" />';
+          html += '  <div class="text">@' + post.user.username + ' ' + post.caption + '</div>';
+          html += '</div>';
+
+          return html;
+        }, '');
+
+      });
+
+    });
+  </script>
+
+<% include foot %>
