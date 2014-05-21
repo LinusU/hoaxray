@@ -2,7 +2,6 @@
   "name": "hoaxray",
   "version": "0.1.0",
   "devDependencies": {
-    "express": "^4.1.1",
     "gulp": "^3.6.2",
     "gulp-concat": "^2.2.0",
     "gulp-ejs": "^0.2.2",

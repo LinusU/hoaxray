@@ -35,10 +35,8 @@ gulp.task('assets', function () {
 });
 
 gulp.task('server', ['default'], function () {
-  var express = require('express');
-  var app = express();
-  app.use(express.static(__dirname + '/build'));
-  app.listen(5680);
+  var child_process = require('child_process');
+  child_process.exec('php -S localhost:5680 -t ' + (__dirname + '/build'));
   console.log('http://localhost:5680/');
 });
 
